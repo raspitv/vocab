@@ -24,10 +24,10 @@ x = 0
 while x < iterations:
     selection = random.randint(0, lines)
     print(clean_lines[selection])
+    prompt = ""
     if x % 10 == 0:
-        answer = input("<Enter> = recognise, anything else = don't recognise")
-    else:
-        answer = input()
+        prompt = "<Enter> = recognise, anything else = don't recognise "
+    answer = input(prompt)
     if answer == "":
         recognised += 1
     else:
