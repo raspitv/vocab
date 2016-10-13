@@ -20,8 +20,7 @@ results = list(open("wordlist.txt", "r"))
 clean_lines = [x.strip() for x in results] # remove \n line ends
 lines = len(clean_lines)
 
-x = 0
-while x < iterations:
+for x in range(iterations):
     selection = random.randint(0, lines)
     print(clean_lines[selection])
     if x % 10 == 0:
@@ -32,7 +31,6 @@ while x < iterations:
         recognised += 1
     else:
         unknown_words.append(clean_lines[selection])
-    x += 1
 
 vocab = int(recognised / float(iterations) * lines)
 
