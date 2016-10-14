@@ -10,14 +10,10 @@ wordlist = list(open("unknown_words.txt", "r"))
 words = [x.strip() for x in wordlist]    # remove \n line ends
 
 base_url = 'http://www.dictionary.com/browse/'
-urls =[]
 
-for word in words:                       # create list of urls to scan
-    urls.append(base_url+word)
-                                         # page scanning function
-def scan(someurl):
-    # split off the last part of url and stuff into a variable
-    keyword = someurl.split('/')[4]
+def lookup(keyword):                     # word lookup function
+    # build url to lookup
+    someurl = base_url + keyword
     req = Request(someurl)               # grab web page
     try:
         grab_page = urlopen(req)
@@ -41,6 +37,6 @@ def scan(someurl):
                         def_unknowns = open("unknown_words_defs.txt", "a")
                         def_unknowns.write(write_line) # write word + def'n to file
                         def_unknowns.close()                       
-for url in urls:
-    scan(url)
+for word in words:
+    lookup(word)
     print()
