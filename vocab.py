@@ -33,5 +33,10 @@ print ("that's ", recognised / float(iterations) * 100, "%")
 print ("Your 'Scrabble list' vocabulary is: ", vocab)
 print ("Your 'Corrected'     vocabulary is: ", int(vocab / correction_factor))
 print ("Here are the words you said you didn't know...")
+
+add_unknowns = open("unknown_words.txt", "a")
 for word in unknown_words:
     print (word)
+    add_unknowns.write(word+"\n")    
+
+add_unknowns.close()
