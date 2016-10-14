@@ -10,7 +10,7 @@ unknown_words = []
 
 # Open the word list and read into Python list
 results = list(open("wordlist.txt", "r"))
-clean_lines = [x.strip() for x in results] # remove /n line ends
+clean_lines = [x.strip() for x in results] # remove \n line ends
 lines = len(clean_lines)
 
 while x < iterations:
