@@ -13,13 +13,17 @@ base_url = 'http://www.dictionary.com/browse/'
 
 def lookup(keyword):                     # word lookup function
     # build url to lookup
-    someurl = base_url + keyword
-    req = Request(someurl)               # grab web page
+    url = base_url + keyword
+    req = Request(url)                   # grab web page
     try:
         grab_page = urlopen(req)
     except URLError as e:
         if hasattr(e, 'reason'):
             print(keyword, e.reason)
+            undef_unknowns = open("unknown_words_notfound.txt", "a")
+            undef_unknowns.write((keyword + "\n"))      # log unfound word in file
+            undef_unknowns.close()  
+
         elif hasattr(e, 'code'):
             print('The server couldn\'t fulfill the request.')
             print('Error code: ', e.code)
