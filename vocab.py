@@ -21,8 +21,8 @@ clean_lines = [x.strip() for x in results] # remove \n line ends
 lines = len(clean_lines)
 
 for x in range(iterations):
-    selection = random.randint(0, lines)
-    print(clean_lines[selection])
+    new_word = random.choice(clean_lines)
+    print(new_word)
     prompt = ""
     if x % 10 == 0:
         prompt = "<Enter> = recognise, anything else = don't recognise "
@@ -30,7 +30,7 @@ for x in range(iterations):
     if answer == "":
         recognised += 1
     else:
-        unknown_words.append(clean_lines[selection])
+        unknown_words.append(new_word)
 
 vocab = int(recognised / float(iterations) * lines)
 
